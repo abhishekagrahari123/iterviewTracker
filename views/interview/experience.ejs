@@ -1,0 +1,9 @@
+<%- include('../partials/header'); -%>
+   
+    <% list2.forEach((experience) => { %>
+      
+      <% if(experience.approv){ %>   <a href="<%= experience.link %>"><h2><%= experience.name %> </h2> </a><% } %>
+      
+    <% }) %>
+
+ <%- include('../partials/footer'); -%>

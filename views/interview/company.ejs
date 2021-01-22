@@ -1,0 +1,17 @@
+<%- include('../partials/header'); -%>
+<nav>
+  <ul>
+      <% if(user){ %>    
+        <li><button id="myBtn">ADD INTERVIEW EXPERIENCE</button></li>
+          <% } %>
+  </ul>
+</nav>
+    <% b2.forEach((company) => { %>
+        <ul>
+          <a href="/company/<%= company._id %>"><h2><%= company.name %> </h2></a>
+        </ul>
+        
+    <% }) %>
+    <%- include('../add.ejs'); -%>
+ <%- include('../partials/footer'); -%>
+

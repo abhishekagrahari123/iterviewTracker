@@ -1,0 +1,9 @@
+<%- include('../partials/header'); -%>
+   
+    <% list.forEach((question) => { %>
+      
+      <% if(question.approv){ %>   <a href="<%= question.link %>"><h2><%= question.name %> </h2> </a><% } %>
+      
+    <% }) %>
+
+ <%- include('../partials/footer'); -%>
