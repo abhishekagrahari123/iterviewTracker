@@ -63,7 +63,9 @@ run2 = async(req,res)=>{
 
 
 app.get('/',run2);  
-
+app.get('/hello',(req,res)=>{
+    res.render('mike');
+});  
 app.use(authRoutes);
 
 app.use(requireAuth);

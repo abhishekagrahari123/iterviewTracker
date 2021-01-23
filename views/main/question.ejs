@@ -1,9 +1,76 @@
-<%- include('../partials/header'); -%>
-   
-    <% list.forEach((question) => { %>
-      
-      <% if(question.approv){ %>   <a href="<%= question.link %>"><h2><%= question.name %> </h2> </a><% } %>
-      
-    <% }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+  body{
+      margin: 0px;
+      padding: 0px;
+      background: url(/bg12.jpg);
+  }
+</style>
+<body>
+    <header class="text-gray-400 bg-gray-900 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">INTERVIEW TRACKER</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <% if(user){ %>
+              <a class="mr-5 hover:text-white">Welcome, <%= user.email %></a>
+              <a class="mr-5 hover:text-white"><button id="myBtn">ADD QUESTION</button></a>
+              <% if(user.admin){ %>
+                  <a href="/admin" class="mr-5 hover:text-white">ADMIN PAGE</a>
+              <% } %>
+              <a href="/" class="mr-5 hover:text-white">HOME</a>
+              <a href="/logout" class="mr-5 hover:text-white">LOG OUT</a>
+                    
+              <% }else{ %>
+              <a href="/" class="mr-5 hover:text-white">HOME</a>
+              <a href="/login" class="mr-5 hover:text-white">LOG IN</a>
+              <a href="/signup" class="mr-5 hover:text-white">SIGN UP</a>
+            <% } %>
+          </nav>
+        </div>
+      </header>
+    <section class="text-gray-400 body-font ">
+        <div class="container px-5 py-10 mx-auto">
+            
+          <div class="flex flex-wrap w-full mb-20">
+            <div class="lg:w-1/2 w-full mb-4 lg:mb-0">
+              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">Questions</h1>
+              <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+            </div>
+          </div>
 
- <%- include('../partials/footer'); -%>
+          <div class="flex flex-wrap -m-4">
+            
+            <% list.forEach((question) => { %>
+              <% if(question.approv){ %>
+              <div class="xl:w-1/4 md:w-1/2 p-4">
+                <div class="bg-gray-800 hover:bg-indigo-600 bg-opacity-40 p-6 rounded-lg">
+                  <a href="<%= question.link %>"><img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content"></a>
+                  <h3 class="tracking-widest text-indigo-400 text-xs font-medium title-font">SUBTITLE</h3>
+                  <h2 class="text-lg text-white font-medium title-font mb-4"><a href="<%= question.link %>"><h2><%= question.name %></a></h2>
+                  <p class="leading-relaxed text-base">Level 1</p>
+                </div>
+              </div>
+              <% } %>
+            <% }) %>
+
+          </div>
+        </div>
+      </section>
+
+
+      <%- include('../addex.ejs'); -%>
+      <%- include('../partials/footer'); -%>
+      
