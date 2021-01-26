@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylemodal.css">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> 
+
     <title>Document</title>
 </head>
 <style>
@@ -43,14 +44,6 @@
       </header>
     <section class="text-gray-400 body-font ">
         <div class="container px-5 py-24 mx-auto">
-            
-          <div class="flex flex-wrap w-full mb-20">
-            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">Topics</h1>
-              <div class="h-1 w-20 bg-indigo-500 rounded"></div>
-            </div>
-            <p class="lg:w-1/2 w-full leading-relaxed text-gray-400 text-opacity-90">Don't get afraid of the long list. Just get started ....</p>
-          </div>
 
           <div class="flex flex-wrap -m-4">
             
@@ -58,7 +51,7 @@
               <div class="xl:w-1/4 md:w-1/2 p-4">
                 <div class="bg-gray-800 hover:bg-indigo-600 bg-opacity-40 p-6 rounded-lg">
                   <a href="/topics/<%= topic._id %>"><img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content"></a>
-                  <h3 class="tracking-widest text-indigo-400 text-xs font-medium title-font">SUBTITLE</h3>
+                  <!-- <h3 class="tracking-widest text-indigo-400 text-xs font-medium title-font">SUBTITLE</h3> -->
                   <h2 class="text-lg text-white font-medium title-font mb-4"><a href="/topics/<%= topic._id %>"><h2><%= topic.name %></a></h2>
                   <p class="leading-relaxed text-base">Level 1</p>
                 </div>
@@ -68,8 +61,6 @@
           </div>
         </div>
       </section>
-
-
       <%- include('../addex.ejs'); -%>
       <%- include('../partials/footer'); -%>
       
