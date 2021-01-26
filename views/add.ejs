@@ -2,33 +2,41 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
-            <form id="demo2">
-                <label for="experience">Name</label>
-                <input type="text" name="name" required/>
-                
-                <label for="company">Company</label>
-            
-                <select name="company" id="myList" required>  
-                    <option>  </option>
-                 
-                    <% rest2.forEach((company) => { %>
-                        <option>  <%= company.name %> </option> 
-                    <% }) %>
-
-                </select>  
-            
-            
-                <label for="link">Experience</label> 
-                <input type="text" name="experience" required/>
-                
-                <button>SUBMIT</button>
-            </form>
+      <span class="close">&times;</span>
+  
+      <div class="container">
+        <div class="text">ADD INTERVIEW EXPERIENCE</div>
+        <form id="demo2">
+  
+          <div class="data">
+            <label for="question">Name</label>
+            <input type="text" name="name" required>
+          </div>
+  
+          <div class="data">
+            <label for="question">Company : </label>
+            <option>  </option>
+            <select name="company" id="myList">
+                <% rest2.forEach((company) => { %>
+                    <option>  <%= company.name %> </option> 
+                <% }) %>
+  
+            </select>
+          </div>
+  
+          <div class="data">
+            <label for="link">Experience</label>
+            <input type="text" name="experience" required>
+          </div>
+  
+          
+          <button>SUBMIT</button>
+        </form>
+      </div>
     </div>
+  </div>
   
-</div>
-  
-<script>
+  <script>
     // Get the modal
     var modal = document.getElementById("myModal");
     
@@ -54,10 +62,7 @@
         modal.style.display = "none";
       }
     }
-    </script>           
-            
-      
-
+    </script> 
 <script>
     const form2 = document.getElementById("demo2");
     form2.addEventListener('submit', async (e)=>{
@@ -74,7 +79,7 @@
                 body:JSON.stringify({name,company,experience}),
                 headers:{'Content-Type':'application/json'}
             });
-            location.assign('/');
+            location.assign('/company');
             
         }catch(err){
             console.log(err);

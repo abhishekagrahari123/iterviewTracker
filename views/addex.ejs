@@ -1,83 +1,89 @@
 <div id="myModal" class="modal">
 
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-            <form id="demo2">
-                <label for="question">Question Name</label>
-                <input type="text" name="name" required/>
-                
-                <label for="topic">Topic</label>
-            
-                <select name="topic" id="myList" required>  
-                    <option>  </option>
-                 
-                    <% rest.forEach((topic) => { %>
-                        <option>  <%= topic.name %> </option> 
-                    <% }) %>
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
 
-                </select>  
-            
-            
-                <label for="link">Link</label> 
-                <input type="text" name="link" required/>
-                
-                <button>SUBMIT</button>
-            </form>
+    <div class="container">
+      <div class="text">ADD QUESTION</div>
+      <form id="demo2">
+
+        <div class="data">
+          <label for="question">Question Name</label>
+          <input type="text" name="name" required>
+        </div>
+
+        <div class="data">
+          <label for="question">Topic     : </label>
+          <option>  </option>
+          <select name="topic" id="myList">
+              <% rest.forEach((topic)=> { %>
+            <option><%= topic.name %></option>
+              <% }) %>
+
+          </select>
+        </div>
+
+        <div class="data">
+          <label for="link">Link</label>
+          <input type="text" name="link" required>
+        </div>
+
+        
+        <button>SUBMIT</button>
+      </form>
     </div>
-  
+  </div>
 </div>
-  
+
 <script>
-    // Get the modal
-    var modal = document.getElementById("myModal");
-    
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-    
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-    
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-      modal.style.display = "block";
-    }
-    
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
       modal.style.display = "none";
     }
-    
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-    </script>           
-            
-      
+  }
+  </script> 
 
 <script>
-    const form2 = document.getElementById("demo2");
-    form2.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-        
-        //get the values
-        const name = form2.name.value;
-        const topic = form2.topic.value;
-        const link = form2.link.value;
+  const form2 = document.getElementById("demo2");
+  form2.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        try{
-            const res = await fetch('/addq',{
-                method: 'POST',
-                body:JSON.stringify({name,topic,link}),
-                headers:{'Content-Type':'application/json'}
-            });
-            location.assign('/');
-            
-        }catch(err){
-            console.log(err);
-        }
-    });
+    //get the values
+    const name = form2.name.value;
+    const topic = form2.topic.value;
+    const link = form2.link.value;
+
+    try {
+      const res = await fetch('/addq', {
+        method: 'POST',
+        body: JSON.stringify({ name, topic, link }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+      location.assign('/topics');
+
+    } catch (err) {
+      console.log(err);
+    }
+  });
 </script>
