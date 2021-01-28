@@ -20,8 +20,8 @@ const viewexperience = async (req,res) =>
 const experiencePage = async (req,res) => 
 {
   const id3= req.params.id3;
-  l3 = await interview.find({_id:id3});
-  res.locals.experiencer = l3[0];
+  l3 = await interview.findById(id3);
+  res.locals.experiencer = l3;
   res.render('interview/experiencer.ejs');
 }
 
