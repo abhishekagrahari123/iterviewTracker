@@ -3,8 +3,12 @@ const companies = require('./companies.js');
 interviewSchema = new mongoose.Schema({
     name:{type:String},
 
+    branch:{type:String},
+
+    year:{type:String},
+
     company:{type:mongoose.Schema.Types.ObjectId,ref:'Company'},
-    
+
     experience:{type:String},
 
     approv:  {

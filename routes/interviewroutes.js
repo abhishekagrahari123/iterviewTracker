@@ -4,5 +4,5 @@ const f2 = require('../controllers/interviewcontroller.js');
 
 router2.get('/company' , f2.viewcompany);
 router2.get('/company/:id2' , f2.viewexperience);
-
+router2.get('/:id3' , f2.experiencePage);
 module.exports = router2 ;

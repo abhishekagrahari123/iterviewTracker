@@ -17,4 +17,12 @@ const viewexperience = async (req,res) =>
   res.render('interview/experience.ejs' , {list2:l2});
 }
 
-module.exports = {viewcompany,viewexperience};
+const experiencePage = async (req,res) => 
+{
+  const id3= req.params.id3;
+  l3 = await interview.find({_id:id3});
+  res.locals.experiencer = l3[0];
+  res.render('interview/experiencer.ejs');
+}
+
+module.exports = {viewcompany,viewexperience,experiencePage};
