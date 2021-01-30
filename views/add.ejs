@@ -77,24 +77,22 @@
     const form2 = document.getElementById("demo2");
     form2.addEventListener('submit', async (e)=>{
         e.preventDefault();
-        
-        //get the values
-        const name = form2.name.value;
-        const branch = form2.branch.value;
-        const year = form2.year.value;
-        const company = form2.company.value;
-        const experience = form2.experience.value;
 
-        try{
-            const res = await fetch('/adde',{
-                method: 'POST',
-                body:JSON.stringify({name,branch,year,company,experience}),
-                headers:{'Content-Type':'application/json'}
-            });
-            location.assign('/company');
-            
-        }catch(err){
-            console.log(err);
-        }
+    const formData = new FormData();
+    formData.append('name',form2.name.value);
+    formData.append('branch',form2.branch.value);
+    formData.append('year',form2.year.value);
+    formData.append('company',form2.company.value);
+    formData.append('experience',form2.experience.value);
+    try {
+      const res = await fetch('/adde', {
+        method: 'POST',
+        body: formData,
+      });
+      location.assign('/company');
+
+    } catch (err) {
+      console.log(err);
+    }
     });
 </script>

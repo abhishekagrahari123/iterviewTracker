@@ -1,9 +1,13 @@
 const topicModel = require("../models/topics.js");
 const question = require("../models/questions.js");
 
+
 module.exports.addq_post = async (req,res)=>{
-    const {name, topic, link} = req.body;
-    //console.log(topic);
+   const formData = req.body;
+    console.log(formData.topic);
+    const name = formData.name;
+    const topic = formData.topic;
+    const link = formData.link;
     try{
         l2 = await topicModel.findOne({name:topic});
         const newq = await question.create({name : name, topic : l2._id, link : link});
@@ -11,6 +15,6 @@ module.exports.addq_post = async (req,res)=>{
     }
     catch(err){ 
         console.log(err);
-    }
+     }
 }
 

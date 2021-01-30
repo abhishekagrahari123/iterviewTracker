@@ -15,10 +15,9 @@
 
         <div class="data">
           <label for="question">Topic     : </label>
-          <option>  </option>
           <select name="topic" id="myList">
               <% rest.forEach((topic)=> { %>
-            <option><%= topic.name %></option>
+            <option value="<%= topic.name %>"><%= topic.name %></option>
               <% }) %>
 
           </select>
@@ -69,16 +68,17 @@
   form2.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    //get the values
-    const name = form2.name.value;
-    const topic = form2.topic.value;
-    const link = form2.link.value;
+    const formData = new FormData();
+    formData.append('name',form2.name.value);
+    formData.append('topic',form2.topic.value);
+    formData.append('link',form2.link.value);
 
+    console.log(formData);
+    
     try {
       const res = await fetch('/addq', {
         method: 'POST',
-        body: JSON.stringify({ name, topic, link }),
-        headers: { 'Content-Type': 'application/json' }
+        body: formData
       });
       location.assign('/topics');
 
