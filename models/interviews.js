@@ -14,8 +14,12 @@ interviewSchema = new mongoose.Schema({
     approv:  {
         type: Boolean,
         default: false
-    }
+    },
+
+    img:{ data : Buffer, contentType: String}
 });
+
+
 
 const interview = mongoose.model('Interview',interviewSchema)
 module.exports= interview;

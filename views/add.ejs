@@ -6,7 +6,7 @@
   
       <div class="container">
         <div class="text">ADD INTERVIEW EXPERIENCE</div>
-        <form id="demo2">
+        <form id="demo2" action="/adde" method="POST" enctype="multipart/form-data">
   
           <div class="data">
             <label for="name">Name</label>
@@ -34,6 +34,11 @@
             </select>
           </div>
   
+          <div class="data">
+            <label value = "upload">Upload your Profile Photo</label>
+            <input type="file" for="image" name="uploaded_image" required />
+          </div>
+
           <div class="data">
             <label for="link">Experience</label>
             <input type="text" name="experience" required>
@@ -73,26 +78,3 @@
       }
     }
     </script> 
-<script>
-    const form2 = document.getElementById("demo2");
-    form2.addEventListener('submit', async (e)=>{
-        e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('name',form2.name.value);
-    formData.append('branch',form2.branch.value);
-    formData.append('year',form2.year.value);
-    formData.append('company',form2.company.value);
-    formData.append('experience',form2.experience.value);
-    try {
-      const res = await fetch('/adde', {
-        method: 'POST',
-        body: formData,
-      });
-      location.assign('/company');
-
-    } catch (err) {
-      console.log(err);
-    }
-    });
-</script>
