@@ -48,11 +48,18 @@
             <section class="text-gray-400 body-font">
               <div class="container px-5 py-24 mx-auto">
                 <div class="flex flex-wrap -m-4">
+                  
                   <% list2.forEach((experience) => { %>
-                    <% if(experience.approv){ %>     
+                    <% if(experience.approv){ %>
+
                     <div class="p-4 md:w-1/3">
                       <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                        <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="<% experience.imgSrc %>" alt="blog">
+                        <% if(experience.img.data != null && experience.img.contentType != null ){ %>
+                          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="data:<%=experience.img.contentType%>;base64,<%= experience.img.data.toString('base64')%>" alt="blog">
+                          <% }else{ %>
+                            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
+                            <% } %>
+                          
                         <div class="p-6">
                           <h2 class="tracking-widest text-xs title-font font-medium text-white mb-1">CATEGORY</h2>
                           <h1 class="title-font text-lg font-medium text-white mb-3"><%= experience.name %></h1>

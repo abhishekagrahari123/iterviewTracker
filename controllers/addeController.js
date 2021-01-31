@@ -25,8 +25,6 @@ module.exports.adde_post = async (req,res)=>{
     const experience = formData.experience;
     try{
         l3 = await companyModel.findOne({name:company});
-        
-        console.log(req.file.path);
         var Exp = new interview({
             name : name,
             branch : branch,
@@ -38,7 +36,6 @@ module.exports.adde_post = async (req,res)=>{
                 contentType:'image/png'
             }
         });
-        console.log(fs.readFileSync(req.file.path));
         Exp.save();
 
         res.redirect('/company');
