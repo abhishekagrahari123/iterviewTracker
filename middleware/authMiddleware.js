@@ -16,7 +16,7 @@ const requireAuth = (req,res,next) => {
                 let user = await User.findById(decodedToken.id);
                 if(!user.admin){
                     //console.log(req.url);
-                    if(req.url=='/admin'){
+                    if(req.url.substr(0,6)=='/admin'){
                         res.send('You are not admin :(');
                     }else{
                         next();
