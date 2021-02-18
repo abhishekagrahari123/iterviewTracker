@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   outline: none;
+  display: grid
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
@@ -113,13 +114,26 @@ button:hover {
   margin-top: -20px;
 }
 .container form .data{
-  height: 45px;
+  height: 55px;
   width: 100%;
   margin: 40px 0;
 }
 form .data label{
   font-size: 18px;
 }
+
+form .data textarea{
+  height: 100%;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 17px;
+  border: 1px solid silver;
+}
+form .data textarea:focus{
+  border-color: #3498db;
+  border-bottom-width: 2px;
+}
+
 form .data input{
   height: 100%;
   width: 100%;
