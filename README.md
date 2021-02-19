@@ -2,7 +2,6 @@
 
 This Project is made for helping people preparing for the coding interviews. It provides them list of important questions for practice and interview experience of the seniors. People can also add questions and share their interview experience.
 
-___
 
 ## Screenshots of different webpages are as follows :
 
@@ -65,6 +64,20 @@ _After clicking on a particular company you will get interview experience of you
 
 ___
 
+## INSTALLATION
+
+* Download this github repo.
+* In the folder where you dowloaded run the following command.
+
+```sh
+npm install
+```
+```sh
+nodemon app.js
+```
+* On your browser go to http://localhost:3000/
+___
+
 ## Built with
 
 * Node JS
@@ -72,6 +85,8 @@ ___
 * Mongo DB
 * Admin-Bro
 ___
+
+## Contributor
 
 _This project is made by Abhishek Agrahari under the guidance of Coding club IITG._
 
