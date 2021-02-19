@@ -67,11 +67,14 @@ ___
 ## INSTALLATION
 
 * Download this github repo.
-* In the folder where you dowloaded run the following command.
+* In the folder where you dowloaded run the following command to download the used dependencies.
 
 ```sh
 npm install
 ```
+* Create a collection in MongoDB and paste the url at dbURI in app.js file.
+* Run the app by following command.
+
 ```sh
 nodemon app.js
 ```
