@@ -34,9 +34,7 @@ app.set('view engine','ejs');
 
 //database connection and admin bro setup
 const run = async () => {
-    const dbURI =
-    // ' Paste your database collection url here ' ;
-    ;
+    const dbURI = "mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth";
     const mongooseDb = await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true} );
     app.listen(3000);
     const AdminBroOptions = {
@@ -64,12 +62,8 @@ run2 = async(req,res)=>{
 }
 
 
-app.get('/',run2);  
-app.get('/hello',(req,res)=>{
-    res.render('mike');
-});  
+app.get('/',run2);   
 app.use(authRoutes);
-
 app.use(requireAuth);
 app.use(mainroutes);
 app.use(interviewroutes);
