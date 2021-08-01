@@ -3,7 +3,7 @@ const question = require("../models/questions.js");
 
 
 module.exports.addq_post = async (req,res)=>{
-   const formData = req.body;
+    const formData = req.body;
     console.log(formData.topic);
     const name = formData.name;
     const topic = formData.topic;

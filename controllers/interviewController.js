@@ -1,8 +1,5 @@
 const company = require("../models/companies.js");
 const interview = require("../models/interviews.js");
-const path = require('path');
-const fs = require('fs');
-var multer = require('multer');
 const viewcompany = async (req,res) =>
 {
   const result2 = await company.find();
