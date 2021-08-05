@@ -22,33 +22,26 @@ const app = express();
 AdminBro.registerAdapter(AdminBroMongoose);
 app.use(express.json());
 app.use(cookieParser());
-
-//middleware
+app.set('view engine','ejs');
 app.use(express.static('public'));
 
-//view engine
-app.set('view engine','ejs');
+const dbURI = 'mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
+.then((result) => app.listen(3000)).
+catch((err) => console.log(err));
+
+const AdminBroOptions = {
+    rootPath: '/admin',
+   resources: [user,topic,question,company,interview]
+}
+const adminBro = new AdminBro(AdminBroOptions);
+const router = AdminBroExpress.buildRouter(adminBro);
 
 app.get('*',checkUser);
-//database connection and admin bro setup
-const run = async () => {
-    const dbURI = "mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth";
-    await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true} );
-    app.listen(3000);
-    const AdminBroOptions = {
-        rootPath: '/admin',
-       resources: [user,topic,question,company,interview]
-    }
-    const adminBro = new AdminBro(AdminBroOptions);
-    const router = AdminBroExpress.buildRouter(adminBro);
-    app.use(adminBro.options.rootPath,adminAuth, router);
-}
-run().catch(err => console.log(err));
-
-//routes
 app.get('/',(req,res)=> res.render('home'));   
 app.use(authRoutes);
 app.use(requireAuth);
+app.use(adminBro.options.rootPath,adminAuth, router);
 app.use(mainroutes);
 app.use(interviewroutes);
 app.use(addqRoutes);
