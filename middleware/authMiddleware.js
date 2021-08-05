@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-
+//this function runs when user is trying to access routes which require authentication.
+//if user is authenticated it calls next else redirect to login page
 const requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
   
-    // check json web token exists & is verified
+    //if token is present with correct value the user is authorized 
+    //otherwise redirected to login page
     if (token) {
       jwt.verify(token, 'net ninja secret', (err, decodedToken) => {
         if (err) {
@@ -21,17 +23,16 @@ const requireAuth = (req, res, next) => {
     }
   };
 
-//check current user
+//this tries to insert user document stored in mongoDB to the views.
+// If user is not authenticated then it the user variable to null. 
 const checkUser = (req,res,next)=>{
     const token  = req.cookies.jwt;
-
     if(token){
         jwt.verify(token,'net ninja secret',async (err,decodedToken)=>{
             if(err){
                 res.locals.user = null;
                 next();
             }else{
-                
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user;
                 next();
@@ -43,28 +44,26 @@ const checkUser = (req,res,next)=>{
     }
 }
 
+
+//this funciton runs when user tries to access admin routes.
+//it finds user from the token and checks whether user is admin or not 
+//if he is not admin sends You are not admin message.
 const adminAuth = (req, res, next) => {
     const token = req.cookies.jwt;
-  
-    // check json web token exists & is verified
-    if (token) {
-      jwt.verify(token, 'net ninja secret', async(err, decodedToken) => {
-        if (err) {
-          console.log(err.message);
-          res.redirect('/login');
-        } else {
-          let user = await User.findById(decodedToken.id);
-          if(user.admin){
-            next();
-          }
-          else{
-            res.send('You are not admin :(');
-          }
+    jwt.verify(token, 'net ninja secret', async(err, decodedToken) => {
+      if (err) {
+        console.log(err.message);
+        res.redirect('/login');
+      } else {
+        let user = await User.findById(decodedToken.id);
+        if(user.admin){
+          next();
         }
-      });
-    } else {
-      res.redirect('/login');
-    }
+        else{
+          res.send('You are not admin :(');
+        }
+      }
+    });
   };
   
 
