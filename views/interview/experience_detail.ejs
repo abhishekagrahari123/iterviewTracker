@@ -45,8 +45,8 @@
       <section class="text-gray-400 body-font">
         <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
 
-          <% if(experiencer.img.data != null && experiencer.img.contentType != null ){ %>
-            <img class="lg:h-48 md:h-36 object-cover object-center" src="data:<%=experiencer.img.contentType%>;base64,<%= experiencer.img.data.toString('base64')%>" alt="blog">
+          <% if(exp_author.img.data != null && exp_author.img.contentType != null ){ %>
+            <img class="lg:h-48 md:h-36 object-cover object-center" src="data:<%=exp_author.img.contentType%>;base64,<%= exp_author.img.data.toString('base64')%>" alt="blog">
           <% }else{ %>
               <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
           <% } %>
@@ -54,8 +54,8 @@
           
           
           <div class="text-center lg:w-2/3 w-full">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white"><%= experiencer.name %></h1>
-            <p class="leading-relaxed mb-8"><%= experiencer.experience %></p>
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white"><%= exp_author.name %></h1>
+            <p class="leading-relaxed mb-8"><%= exp_author.experience %></p>
           </div>
         </div>
       </section>
