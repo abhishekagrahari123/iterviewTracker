@@ -32,7 +32,11 @@
                 <% }) %>           
             </select>
           </div>
-  
+          
+          <!-- This is the HTML template for the “upload page”. 
+          Notice that the src parameter for the <img> is not a typical URL.
+          This format enables displaying the image stored in binary format in the Mongo database,
+          and we convert it to base64 so that the browser can render it. -->
           <div class="data">
             <label value = "upload">Upload your Profile Photo</label>
             <input type="file" for="image" name="uploaded_image" required />

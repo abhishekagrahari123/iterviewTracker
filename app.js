@@ -34,6 +34,7 @@ app.use(express.static('public'));
 
 //connecting to database and listening to port 3000
 const dbURI = 'mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth';
+// this options obj allows us to run the code without any deprication,warning, etc
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
 .then((result) => app.listen(3000)).
 catch((err) => console.log(err));
@@ -46,7 +47,7 @@ const AdminBroOptions = {
 const adminBro = new AdminBro(AdminBroOptions);
 const router = AdminBroExpress.buildRouter(adminBro);
 
-//injecting user document to all routes. It is null for unauthenticated users.
+//injecting user document to all routes using jwt token.It is null if there is no token or error in decoding token
 app.get('*',checkUser);
 
 //for unauthorised users

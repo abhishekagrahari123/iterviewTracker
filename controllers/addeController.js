@@ -4,7 +4,8 @@ const path = require('path');
 const fs = require('fs');
 var multer = require('multer');
 
-//set the storage engine
+// We will define the storage path for the image we are uploading. 
+// Here, we are using the middleware Multer to upload the photo to the server in a folder called `uploads` so we can process it.
 const Storage = multer.diskStorage({
     destination: 'uploads/',
     filename: (req,file,cb)=>{
@@ -14,9 +15,7 @@ const Storage = multer.diskStorage({
 
 module.exports.upload = multer({storage:Storage});
 
-
 module.exports.adde_post = async (req,res)=>{
-
     const formData = req.body;
     const name = formData.name;
     const branch = formData.branch;
@@ -24,6 +23,8 @@ module.exports.adde_post = async (req,res)=>{
     const company = formData.company;
     const experience = formData.experience;
     try{
+        // Handle the POST request that processes the form data submitted by the user from our HTML UI. 
+        //  This request will have the new images being uploaded.
         l3 = await companyModel.findOne({name:company});
         var Exp = new interview({
             name : name,
@@ -37,7 +38,6 @@ module.exports.adde_post = async (req,res)=>{
             }
         });
         Exp.save();
-
         res.redirect('/company');
         
     }

@@ -11,7 +11,7 @@ module.exports.addq_post = async (req,res)=>{
     try{
         l2 = await topicModel.findOne({name:topic});
         const newq = await question.create({name : name, topic : l2._id, link : link});
-        res.status(201).json({newq:newq._id});
+        res.status(201).json({});
     }
     catch(err){ 
         console.log(err);
