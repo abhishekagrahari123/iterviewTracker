@@ -58,7 +58,7 @@ module.exports.login_get = (req,res)=>{
 module.exports.signup_post = async (req,res)=>{
     const {email, password} = req.body;
     try{
-        //once the user is successfully created we create a jwt, that is sent to the server in a cookie and tells it that the user is logged in
+        //once the user is successfully created we create a jwt, that is sent to the client in a cookie and tells it that the user is logged in
         const user = await User.create({email,password});
         // putting the created jwt in a cookie and sending it back as part of the res
         const token = createToken(user._id);
