@@ -66,8 +66,8 @@ ___
 
 ## INSTALLATION
 
-* Download this github repo.
-* In the folder where you dowloaded run the following command to download the used dependencies.
+* Clone this github repo.
+* In the folder where you have dowloaded run the following command to download the used dependencies.
 
 ```sh
 npm install
