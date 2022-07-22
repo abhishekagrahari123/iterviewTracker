@@ -36,7 +36,7 @@ app.use(express.static('public'));
 const dbURI = 'mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth';
 // this options obj allows us to run the code without any deprication,warning, etc
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-.then((result) => app.listen(3000)).
+.then((result) => app.listen(12000)).
 catch((err) => console.log(err));
 
 //setting up AdminBro

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+// const admins = require('/adminList.js');
+const {admins} = require('./adminList');
 //this function runs when user is trying to access routes which require authentication.
 //if user is authenticated it calls next else redirect to login page
 const requireAuth = (req, res, next) => {
@@ -35,10 +36,11 @@ const checkUser = (req,res,next)=>{
             }else{
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user;
+                res.locals.isAdmin = admins.includes(user.email);
                 next();
             }
         });
-    }else{
+    } else {
         res.locals.user = null;
         next();
     }
@@ -56,7 +58,9 @@ const adminAuth = (req, res, next) => {
         res.redirect('/login');
       } else {
         let user = await User.findById(decodedToken.id);
-        if(user.admin){
+        var isAdmin = admins.includes(user.email);
+        res.locals.isAdmin = isAdmin;
+        if(isAdmin){
           next();
         }
         else{

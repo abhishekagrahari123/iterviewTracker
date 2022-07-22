@@ -28,7 +28,7 @@
             <% if(user){ %>
               <a class="mr-5 hover:text-white">Welcome, <%= user.email %></a>
               <a class="mr-5 hover:text-white"><button id="myBtn">ADD QUESTION</button></a>
-              <% if(user.admin){ %>
+              <% if(isAdmin){ %>
                   <a href="/admin" class="mr-5 hover:text-white">ADMIN PAGE</a>
               <% } %>
               <a href="/" class="mr-5 hover:text-white">HOME</a>
