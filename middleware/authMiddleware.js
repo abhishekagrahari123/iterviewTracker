@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-// const admins = require('/adminList.js');
 const {admins} = require('./adminList');
 //this function runs when user is trying to access routes which require authentication.
 //if user is authenticated it calls next else redirect to login page

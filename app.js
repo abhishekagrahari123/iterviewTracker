@@ -35,8 +35,9 @@ app.use(express.static('public'));
 //connecting to database and listening to port 3000
 const dbURI = 'mongodb+srv://abhishek:test1234@cluster0.j4tsp.mongodb.net/node-auth';
 // this options obj allows us to run the code without any deprication,warning, etc
+const port = process.env.PORT || 8000
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-.then((result) => app.listen(12000)).
+.then((result) => app.listen(port)).
 catch((err) => console.log(err));
 
 //setting up AdminBro
