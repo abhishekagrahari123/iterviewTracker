@@ -78,7 +78,7 @@ npm install
 ```sh
 nodemon app.js
 ```
-* On your browser go to http://localhost:3000/
+* On your browser go to http://localhost:8000/
 ___
 
 ## Built with
