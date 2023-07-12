@@ -1,6 +1,6 @@
 # Interview Tracker Website
 
-This Project is made for helping people preparing for the coding interviews. It provides them list of important questions for practice and interview experience of the seniors. People can also add questions and share their interview experience. Visit the website at [Interview Tracker Website](https://prep-tracker-interviews.herokuapp.com/).
+This Project is made for helping people preparing for the coding interviews. It provides them list of important questions for practice and interview experience of the seniors. People can also add questions and share their interview experience. Visit the website at [Interview Tracker Website](http://abhishekinterviewpreptracker.live/).
 
 
 ## Screenshots of different webpages are as follows :
